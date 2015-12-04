@@ -1,0 +1,31 @@
+@@ -50,10 +50,8 @@
+ 		// button on search screen gets special treatment
+ 		lkup.srchBtn = $('#srchBtn');
+ 		lkup.resetForm();
+-		//lkup.disableSrchBtn();
+ 		lkup.srchBtn.bind('click',null,lkup.doSearch);
+ 
+-    $('.criteria').bind('change',null,lkup.enableSrchBtn);
+ 		$('#quitBtn').bind('click',null,lkup.doAbandon);
+ 		$('#retryBtn').bind('click',null,lkup.doBackToSrch);
+ 		$('#choiceBtn1').bind('click',null,lkup.doBackToSrch);
+@@ -97,19 +95,8 @@
+ 
+ 		//lkup.form[0].reset();
+ 		$('#lookupVal').focus();
+-		lkup.disableSrchBtn();
+ 	},
+ 	
+-	disableSrchBtn: function () {
+-//	  lkup.srchBtnBgClr = lkup.srchBtn.css('color');
+-//	  lkup.srchBtn.css('color', '#888888');
+-		lkup.srchBtn.disable();
+-	},
+-	enableSrchBtn: function () {
+-//	  lkup.srchBtn.css('color', lkup.srchBtnBgClr);
+-		lkup.srchBtn.enable();
+-	},
+-
+ 	doBackToSrch: function () {
+ 		lkup.resetForm();
+ 	},

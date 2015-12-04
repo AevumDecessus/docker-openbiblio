@@ -1,0 +1,9 @@
+@@ -199,6 +199,8 @@
+ 		$('#editTbl td #host').val(host['host']);
+ 		$('#editTbl td #name').val(host['name']);
+ 		$('#editTbl td #db').val(host['db']);
++		$('#editTbl td #context').val(host['context']);
++		$('#editTbl td #schema').val(host['schema']);
+ 		$('#editTbl td #seq').val(host['seq']);
+ //		if (host['active'] == '1') {
+ //			$('#editTbl td #active').attr('checked','checked');

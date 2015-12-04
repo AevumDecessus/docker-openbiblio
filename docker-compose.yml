@@ -1,0 +1,28 @@
+web:
+    image: nginx:latest
+    ports:
+        - "8080:80"
+    volumes:
+        - ./conf/vhost.conf:/etc/nginx/sites-enabled/vhost.conf
+        - ./conf/nginx.conf:/etc/nginx/nginx.conf
+        - ./src:/var/www/docker
+    volumes_from:
+        - php
+    links:
+        - php
+php:
+  build: ./images/php-fpm-mysql
+  volumes:
+      - ./src:/var/www/docker
+      - ./conf/php-fpm.conf:/usr/local/etc/php-fpm.conf
+  links:
+      - db
+db:
+    image: mariadb:latest
+    volumes_from:
+        - data-mariadb-openbiblio
+    environment:
+        - MYSQL_ROOT_PASSWORD=y5cbLFd3Z7zskRGwXSdScHqm
+        - MYSQL_DATABASE=openbiblio
+        - MYSQL_USER=openbiblio
+        - MYSQL_PASSWORD=ltK5mbFuqjLI3Rk6Ts2wwE3A
