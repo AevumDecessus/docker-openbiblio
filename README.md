@@ -7,6 +7,7 @@ Contains the following addons:
 * advanced opac
 
 Instructions for use:
+
 1. Create a data container for mariadb. See [this post](http://container42.com/2013/12/16/persistent-volumes-with-docker-container-as-volume-pattern/) for why.
 
     ```bash
