@@ -20,7 +20,7 @@ Instructions for use:
     docker-compose up -d
     ```
 4. Navigate to http://localhost:8080/install/index.php to create initial database tables
-5. Navigate to http://localhost:8080/admin to access the library admin interface
+5. Navigate to http://localhost:8080/admin/index.php to access the library admin interface
 6. Default login is:
   * admin
   * admin
