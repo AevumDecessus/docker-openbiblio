@@ -43,11 +43,13 @@ $trans["opac_WelcomeMsg"]    = "\$text=
   'Welcome to our library\'s online public access catalog.  Search our catalog
    to view bibliography information on holdings we have in our library.';";
 $trans["opac_SearchTitle"]   = "\$text='Search Bibliography by Search Phrase:';";
-$trans["opac_Keyword"]       = "\$text='Keyword';";
 $trans["opac_Title"]         = "\$text='Title';";
 $trans["opac_Author"]        = "\$text='Author';";
 $trans["opac_Subject"]       = "\$text='Subject';";
-$trans["opac_Callno"]        = "\$text='Call Number';";
+$trans["opac_All"]           = "\$text='All';";
 $trans["opac_Search"]        = "\$text='Search';";
+$trans["opac_SearchInvert"]  = "\$text='Invert Selection';";
+$trans["opac_SearchColl"]    = "\$text='Limit Search to Collections';";
+$trans["opac_SearchMat"]     = "\$text='Limit Search to Material Types';";
 
 ?>

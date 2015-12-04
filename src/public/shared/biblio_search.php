@@ -82,7 +82,7 @@
   #*  Retrieving post vars and scrubbing the data
   #****************************************************************************
   if (isset($_POST["page"])) {
-    $currentPageNmbr = intval($_POST["page"]);
+    $currentPageNmbr = $_POST["page"];
   } else {
     $currentPageNmbr = 1;
   }
@@ -107,12 +107,24 @@
       $sType = OBIB_SEARCH_AUTHOR;
     } elseif ($searchType == "subject") {
       $sType = OBIB_SEARCH_SUBJECT;
-    } elseif ($searchType == "callno") {
-      $sType = OBIB_SEARCH_CALLNO;
-    } elseif ($searchType == "keyword") {
-      $sType = OBIB_SEARCH_KEYWORD;
+    } elseif ($searchType == "all") {
+      $sType = OBIB_SEARCH_ALL;
     } else {
       $sType = OBIB_SEARCH_TITLE;
+    }
+  }
+
+  // limit search results to collections and materials
+  $collecs = array();
+  if (is_array($_POST['collec'])) {
+    foreach ($_POST['collec'] as $value) {
+      array_push($collecs, $value);
+    }
+  }
+  $materials = array();
+  if (is_array($_POST['material'])) {
+    foreach ($_POST['material'] as $value) {
+      array_push($materials, $value);
     }
   }
 
@@ -132,13 +144,14 @@
   } else {
     $opacFlg = false;
   }
-  if (!$biblioQ->search($sType,$words,$currentPageNmbr,$sortBy,$opacFlg)) {
+  if (!$biblioQ->search($sType, $words, $currentPageNmbr, $sortBy,
+                        $collecs, $materials, $opacFlg)) {
     $biblioQ->close();
     displayErrorPage($biblioQ);
   }
 
   # Redirect to biblio_view if only one result
-  if ($biblioQ->getRowCount() == 1 && $lookup !== 'Y') {
+  if ($biblioQ->getRowCount() == 1) {
     $biblio = $biblioQ->fetchRow();
     header('Location: ../shared/biblio_view.php?bibid='.U($biblio->getBibid()).'&tab='.U($tab));
     exit();
@@ -178,7 +191,6 @@ function changePage(page,sort)
 -->
 </script>
 
-
 <!--**************************************************************************
     *  Form used by javascript to post back to this page
     ************************************************************************** -->
@@ -189,12 +201,46 @@ function changePage(page,sort)
   <input type="hidden" name="lookup" value="<?php echo H($lookup);?>">
   <input type="hidden" name="page" value="1">
   <input type="hidden" name="tab" value="<?php echo H($tab);?>">
+<?php
+  foreach ($collecs as $collection) {
+    echo '  <input type="hidden" name="collec[]" value="'.$collection.'">'."\n";
+  }
+  foreach ($materials as $material) {
+    echo '  <input type="hidden" name="material[]" value="'.$material.'">'."\n";
+  }
+?>
 </form>
 
 <!--**************************************************************************
     *  Printing result stats and page nav
     ************************************************************************** -->
-<?php 
+<?php
+  if (count($collecs)){
+    echo $loc->getText("biblioSearchCollection").": ";
+    $first = true;
+    foreach($collecs as $collection) {
+      if ($first == true) {
+        $first = false;
+      } else {
+        echo ", ";
+      }
+      echo $collectionDm[$collection];
+    }
+    echo "<br>";
+  }
+  if (count($materials)){
+    echo $loc->getText("biblioSearchMaterial").": ";
+    $first = true;
+    foreach($materials as $material) {
+      if ($first == true) {
+        $first = false;
+      } else {
+        echo ", ";
+      }
+      echo $materialTypeDm[$material];
+    }
+    echo "<br>";
+  }
   echo $loc->getText("biblioSearchResultTxt",array("items"=>$biblioQ->getRowCount()));
   if ($biblioQ->getRowCount() > 1) {
     echo $loc->getText("biblioSearch".$sortBy);

@@ -52,7 +52,6 @@ $trans["indexHdr"]                 = "\$text = 'Cataloging';";
 $trans["indexBarcodeHdr"]          = "\$text = 'Search Bibliography by Barcode Number';";
 $trans["indexBarcodeField"]        = "\$text = 'Barcode Number';";
 $trans["indexSearchHdr"]           = "\$text = 'Search Bibliography by Search Phrase';";
-$trans["indexKeyword"]             = "\$text = 'Keyword';";
 $trans["indexTitle"]               = "\$text = 'Title';";
 $trans["indexAuthor"]              = "\$text = 'Author';";
 $trans["indexSubject"]             = "\$text = 'Subject';";
@@ -90,7 +89,6 @@ $trans["biblioCopyNewFormLabel"]   = "\$text = 'Add New Copy';";
 $trans["biblioCopyNewBarcode"]     = "\$text = 'Barcode Number';";
 $trans["biblioCopyNewDesc"]        = "\$text = 'Description';";
 $trans["biblioCopyNewAuto"]        = "\$text = 'Autogenerate';";
-$trans["biblioCopyNewValidBarco"]  = "\$text = 'Validate for printing';";
 $trans["biblioCopyEditFormLabel"]  = "\$text = 'Edit Copy';";
 $trans["biblioCopyEditFormStatus"] = "\$text = 'Status';";
 
