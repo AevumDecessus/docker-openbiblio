@@ -11,7 +11,7 @@ web:
     links:
         - php
 php:
-  build: ./images/php-fpm-mysql
+  image: aevumdecessus/php-fpm-mysql
   volumes:
       - ./src:/var/www/docker:ro
       - ./conf/php-fpm.conf:/usr/local/etc/php-fpm.conf:ro
