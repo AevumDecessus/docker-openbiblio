@@ -19,11 +19,11 @@ Instructions for use:
     ```bash
     docker-compose up -d
     ```
-4. Navigate to http://localhost:8080/install/index.php to create initial database tables
-5. Navigate to http://localhost:8080/admin/index.php to access the library admin interface
+4. Navigate to [http://localhost/install/index.php](http://localhost/install/index.php) to create initial database tables
+5. Navigate to [http://localhost/admin/index.php](http://localhost/admin/index.php) to access the library admin interface
 6. Default login is:
   * admin
   * admin
-7. Navigate to http://localhost:8080/lookup2/lookupOptsForm.php?reset=Y to install the default lookup2 options
-8. Navigate to http://localhost:8080/lookup2/lookupHostsForm.php?reset=Y to install the default lookup2 hosts
+7. Navigate to [http://localhost/lookup2/lookupOptsForm.php?reset=Y](http://localhost/lookup2/lookupOptsForm.php?reset=Y) to install the default lookup2 options
+8. Navigate to [http://localhost/lookup2/lookupHostsForm.php?reset=Y](http://localhost/lookup2/lookupHostsForm.php?reset=Y) to install the default lookup2 hosts
 9. Enjoy!
